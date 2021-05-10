@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello, world</title>
+    <!--
+    https://www.srihash.org/
+    -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<head>Hello, web !!!</head>
+<br/>
+<br/>
+<a href="./villes">lister les villes</a>
+<br/>
+<br/>
+<br/>
+<br/>
+<form action="./villes" method="post">
+    <div>
+        <label for="name">Nom de la ville :</label>
+        <input type="text" id="name" name="name" required/>
+    </div>
+    <div>
+    <label for="longitude">Longitude :</label>
+    <input id="longitude" type="float" name="longitude" size="10" required/>
+    </div>
+    <div>
+    <label for="latitude">Latitude :</label>
+    <input id="latitude" type="float" name="latitude" size="10" required/>
+    </div>
+    <div class="button">
+        <button type="submit">Ajouter une ville</button>
+    </div>
+</form>
+<script>
+function doPost(){
+    var city_name = document.getElementById("name").value
+    var city_longitude = document.getElementById("longitude").value
+    var city_latitude = document.getElementById("latitude").value
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("POST", "/villes/");
+
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.send(JSON.stringify({name:city_name, longitude: city_longitude, latitude: city_latitude}));
+    }
+</script>
+<input id="clickMe" type="button" value="Ajouter une ville avec javascript" onclick="doPost();" />
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div>
+    Identifiant de la ville à supprimer : <input id="id" type="int" name="id" size="10" required/>
+</div>
+<script>
+  $(document).ready(function(){
+    $('#DeleteButton').click(function(){
+    	$.ajax({
+    		  url: '/villes/'+document.getElementById("id").value,
+    		  method: 'DELETE'
+    		})
+    		  .done(function( data ) {
+    		    console.log(data);
+    		  });
+    });
+  });
+</script>
+
+<input type="button" value="Supprimer une ville" id="DeleteButton" >
+
+</body>
+</html>
