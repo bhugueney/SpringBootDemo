@@ -13,7 +13,7 @@ accesseurs de la classe des objets retournés.
 
    Une requête peut contenir des arguments à la suite du chemin, après
    le caractère =?=, sous la forme =nomArgument=valeurArgument=,
-   séparés par des === s'il y en a plusieurs.  On peut les récupérer
+   séparés par des =&= s'il y en a plusieurs.  On peut les récupérer
    avec l'annotation =@RequestParam=. S'ils sont optionnels, il faut
    l'indiquer avec =required=false=.
 
