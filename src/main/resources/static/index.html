@@ -59,6 +59,14 @@ function doPost(){
     Identifiant de la ville à supprimer : <input id="id" type="int" name="id" size="10" required/>
 </div>
 <script>
+function doDelete(){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("DELETE", "/villes/"+document.getElementById("id").value);
+    xmlhttp.send();
+    }
+</script>
+<input id="clickDelete" type="button" value="Supprimer avec javascript" onclick="doDelete();" />
+<script>
   $(document).ready(function(){
     $('#DeleteButton').click(function(){
     	$.ajax({
@@ -74,5 +82,40 @@ function doPost(){
 
 <input type="button" value="Supprimer une ville" id="DeleteButton" >
 
+<br/>
+<br/>
+<br/>
+<br/>
+<label for="measures-type-select">Type de mesure:</label>
+
+<select name="measure-types" id="measures-type-select">
+    <option value="">--Choisir le type de mesure--</option>
+    <option value="CO2">Dioxyde de carbone</option>
+    <option value="HUMIDITY">Humidité</option>
+    <option value="PRESSURE">Pression</option>
+    <option value="TEMPERATURE">Température</option>
+    <option value="VOC">Composés organiques volatils</option>
+</select>
+<br/>
+<label for="begin-time">Heure de début:</label>
+<input type="datetime-local" id="begin-time"
+       name="begin-time" value="2018-06-12T19:30"
+       min="2018-06-07T00:00" max="2018-06-14T00:00">
+<br/>
+<label for="end-time">Heure de fin:</label>
+<input type="datetime-local" id="end-time"
+       name="end-time" value="2018-06-12T19:30"
+       min="2018-06-07T00:00" max="2018-06-14T00:00">
+<br/>
+<script>
+function doGetMeasure(){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "/villes/sub?"+"measure-type="+document.getElementById("measures-type-select").value
+    +"&start-date="+document.getElementById("begin-time").value
+    +"&end-date="+document.getElementById("end-time").value);
+    xmlhttp.send();
+    }
+</script>
+<input id="getMeasure" type="button" value="récupérer une mesure" onclick="doGetMeasure();" />
 </body>
 </html>

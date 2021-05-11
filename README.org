@@ -1,3 +1,50 @@
 * Spring Boot : les bases
 
-  Exemple de réalisation d'un contrôleur avec Spring Boot.
+  Exemple de réalisation d'un contrôleur avec Spring Boot,
+
+
+**  Lister les entités
+
+Une requête /GET/ retourne une liste d'objets qui sont automatiquement
+/sérialisés/ au format /JSON/. *Attention !* Il faut avoir défini les
+accesseurs de la classe des objets retournés.
+
+** Récupérer des paramètres de la requête
+
+   Une requête peut contenir des arguments à la suite du chemin, après
+   le caractère =?=, sous la forme =nomArgument=valeurArgument=,
+   séparés par des === s'il y en a plusieurs.  On peut les récupérer
+   avec l'annotation =@RequestParam=. S'ils sont optionnels, il faut
+   l'indiquer avec =required=false=.
+
+** Faire créer des entités
+   
+   Ici, on va seulement répondre à des requêtes POST vu qu'on ne gère pas
+   vraiment d'entiées en base de données.
+
+   On peut avoir différents types de contenu suivant qu'une requête
+   /POST/ soit générée par un formulaire HTTP (type de contenu
+   =application/x-www-form-urlencoded=) ou par du code javascript
+   (type de contenu =application/json=). Dans tous les cas de figure,
+   on peut récupérer un objet construit automatiquement à partir des
+   données envoyées.
+
+   
+   Plutôt que de retourner le classique =HttpStatus.OK=, on peut être
+   plus précis en retournant =HttpStatus.CREATED= si tout se passe
+   bien.
+
+*  Gestion de dates
+
+  On peut utiliser le type =java.time.LocalDateTime= pour gérer les
+  dates. Il faut alors s'intéresser au format qui est utilisés pour
+  lire et écrire des dates sous forme de chaînes de caractères.
+
+  Le plus simple est de configurer /Spring/ pour que le [[https://fr.wikipedia.org/wiki/ISO_8601][format ISO]]
+  soit utilisé. On peut le faire en ajoutant les lignes suivantes au
+  fichier de configuration :
+
+
+  spring.mvc.format.date=iso
+  spring.mvc.format.date-time=iso
+  spring.mvc.format.time=iso
