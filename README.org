@@ -20,7 +20,7 @@ accesseurs de la classe des objets retournés.
 ** Faire créer des entités
    
    Ici, on va seulement répondre à des requêtes POST vu qu'on ne gère pas
-   vraiment d'entiées en base de données.
+   vraiment d'entitées en base de données.
 
    On peut avoir différents types de contenu suivant qu'une requête
    /POST/ soit générée par un formulaire HTTP (type de contenu

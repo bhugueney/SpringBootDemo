@@ -57,5 +57,10 @@ public class VilleController {
     public void delete(@PathVariable("identifiant") Long id){
         System.out.println("Suppression de l'entité avec l'id :" +id);
     }
+    @RequestMapping(value = "/{identifiant}", method = RequestMethod.GET)
+    public City readOne(@PathVariable("identifiant") Long id){
+        CityDaoJDBC cityDao= new CityDaoJDBC();
+        return cityDao.findOne(id);
+    }
 
 }

@@ -13,7 +13,9 @@ import java.util.Map;
 @SpringBootApplication
 public class DemoApplication {
 
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+	public static void main(String[] args) {
+		CityDaoJDBC testDao= new CityDaoJDBC();
+		System.out.println(testDao.findOne(10));
 		SpringApplication.run(DemoApplication.class, args);
 	}
 

@@ -3,15 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>hello, world</title>
-    <!--
-    https://www.srihash.org/
-    -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
-            crossorigin="anonymous"></script>
 </head>
 <body>
-<head>Hello, web !!!</head>
+<h1>Hello, web !!!</h1>
 <br/>
 <br/>
 <a href="./villes">lister les villes</a>
@@ -66,22 +60,6 @@ function doDelete(){
     }
 </script>
 <input id="clickDelete" type="button" value="Supprimer avec javascript" onclick="doDelete();" />
-<script>
-  $(document).ready(function(){
-    $('#DeleteButton').click(function(){
-    	$.ajax({
-    		  url: '/villes/'+document.getElementById("id").value,
-    		  method: 'DELETE'
-    		})
-    		  .done(function( data ) {
-    		    console.log(data);
-    		  });
-    });
-  });
-</script>
-
-<input type="button" value="Supprimer une ville" id="DeleteButton" >
-
 <br/>
 <br/>
 <br/>
